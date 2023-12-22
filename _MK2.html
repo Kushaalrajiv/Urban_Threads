@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Urban Threads Clothing</title>
+</head>
+<style>
+    body {
+        background-color: #212529;
+        color: white;
+        text-align: center;
+    }
+    .form{
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+    }
+    main {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    h1 {
+        text-align: center;
+    }
+    #area{
+        height: 70px;
+        width:230px;
+    }
+    a:hover{
+        color: white;
+    }
+</style>
+<script>
+    function validate() {
+        var cal=document.getElementById('cal').value;
+        var name=document.getElementById('name').value;
+        var quant=document.getElementById('quant').value;
+        var output = document.getElementById('output');
+        var phone = document.getElementById("phone").value;
+        var em = document.getElementById("email").value;
+        var Valid = false;
+        var Domains = "rvu.edu.in";
+
+        if (em.indexOf('@') !== -1) {
+            var parts = em.split('@');
+            if (parts.length === 2 && parts[1].length > 0) {
+
+                for (var i = 0; i < Domains.length; i++) {
+                    if (parts[1].endsWith(Domains[i])) {
+                        Valid = true;
+
+                        break;
+                    }
+                }
+            }
+        }
+
+        if (!Valid) {
+            alert("Email is INVALID");
+
+        }
+
+
+        var isValid = false;
+        var countryCode = "+91";
+
+        if (phone.startsWith(countryCode) && phone.length === 13) {
+            var digits = phone.substring(3);
+            if (/^\d{10}$/.test(digits)) {
+                isValid = true;
+            }
+        }
+
+
+        if (!isValid) {
+            alert("Phone number is INVALID");
+
+        }
+
+        if(isValid && Valid){
+        const dialogText = `Bought Date: ${cal}\nName: ${name}\nQuantity: ${quant}\nPhone no: ${phone}\nEmail: ${em}\n`;
+        window.alert(dialogText);
+        }
+
+    }
+
+
+</script>
+
+<body>
+    <h1> Details </h1>
+    <hr>
+    <div class="form">
+    <form>
+        <label for="text">Name: &nbsp;&nbsp;&nbsp;</label>
+        <input type="textbox" id="name" name="text"><br><br><br>
+        <label for="numb">Quantity: </label>
+        <input type="number" id="quant" name="numb"><br><br><br>
+        <label for="gend"> Gender: </label>
+        <input type="radio" name="gend">Male</input>
+        <input type="radio" name="gend">Female<br><br><br>
+        <label for="cal">Date: &nbsp;</label>
+        <input type="date" name="cal" id="cal"><br><br><br>
+        <label for="email">Email: &nbsp;&nbsp;&nbsp;</label>
+        <input type="email" id="email" name="email"><br><br><br>
+        <label for="list">Payment Mode: &nbsp;&nbsp;</label>
+        <select style="margin-right: 50px;">
+            <option>Credit Card</option>
+            <option>UPI</option>
+            <option>Debit Card</option>
+        </select><br><br><br>
+        <label for="phone" style="margin-right: 10px;">Phone Number: </label>
+        <input type="text" style="margin-right: 40px;" id="phone" name="phone"><br><br><br>
+        <label for="check">I have provided :</label>
+        <input type="checkbox">Email</input>
+        <input type="checkbox">Phone no</input>
+        <input type="checkbox">Name</input><br><br><br>
+        <textarea  rows="4" cols="50" placeholder="Enter your feedback"></textarea><br><br><br>
+        <button type="submit" onclick="validate()">Submit</button>
+        </form>
+</div>
+<a href="_MKN1.html">Go back to dashboard</a>
+</body>
+
+</html>
